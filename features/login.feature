@@ -7,4 +7,6 @@ Feature: Login
  Scenario: Login with invalid username and password
    When I login with invalid credentials
    Then I should see the login error message
+
+   # Login validation test
     
