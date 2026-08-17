@@ -1,40 +1,39 @@
-pipeline{
+pipeline {
     agent any
-    stages{
 
-        stage('checkout'){
-            steps{
+    stages {
+
+        stage('Checkout') {
+            steps {
                 checkout scm
             }
         }
 
-        stage('Install Dependencies'){
-            steps{
+        stage('Install Dependencies') {
+            steps {
                 bat 'npm install'
             }
         }
 
-        stage('Run WebdriverIO tests')
-        {
-            steps
-            {
-                bat 'npm install'
+        stage('Run WebdriverIO Tests') {
+            steps {
+                  catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                bat 'npx wdio run wdio.conf.ts'
+                }
             }
         }
 
-        stage('Generate Allure Report')
-        {
-            steps
-            {
-                 bat 'npx allure generate allure-results --clean'
+        stage('Generate Allure Report') {
+            steps {
+                bat 'npx allure generate allure-results --clean'
             }
         }
+    }
 
-        stage('Archive Allure Report')
-        {
-            steps{
-                  archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: false
-            }
+    post {
+        always {
+            archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
+            archiveArtifacts artifacts: 'allure-report/**', allowEmptyArchive: true
         }
     }
 }
