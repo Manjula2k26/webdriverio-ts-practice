@@ -6,6 +6,24 @@ on:
       - master
 
   workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Select test environment'
+        required: true
+        default: 'test'
+        type: choice
+        options:
+          - test
+          - qa
+
+      browser:
+        description: 'Select browser'
+        required: true
+        default: 'chrome'
+        type: choice
+        options:
+          - chrome
+          - firefox
 
 jobs:
   test:
