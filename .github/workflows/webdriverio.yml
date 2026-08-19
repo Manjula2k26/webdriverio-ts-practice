@@ -29,7 +29,18 @@ jobs:
   test:
     runs-on: windows-latest
 
+    env:
+      TEST_ENV: ${{ inputs.environment }}
+      TEST_BROWSER: ${{ inputs.browser }}
+
+
     steps:
+
+      - name: Display selected configuration
+        run: |
+         echo Environment: $env:TEST_ENV
+         echo Browser: $env:TEST_BROWSER
+         
       - name: Checkout
         uses: actions/checkout@v4
 
