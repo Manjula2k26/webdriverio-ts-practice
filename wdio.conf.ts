@@ -7,7 +7,7 @@ export const config = {
 
     capabilities: [
         {
-            browserName: 'chrome'
+            browserName: process.env.TEST_BROWSER || 'chrome'
         }
     ],
 
