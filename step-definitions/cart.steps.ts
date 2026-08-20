@@ -6,7 +6,7 @@ import LoginPage from '../pageobjects/login.page';
 
 import { takeScreenshot } from '../utils/screenshot';
 
-
+//testing github action automatic trigger
 When('I add {string} to the cart', async (productName: string) => {
 
     await ProductsPage.addBackpackToCart();
