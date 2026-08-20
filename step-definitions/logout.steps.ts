@@ -10,12 +10,12 @@ Given('I am logged into the application', async () => {
 
 When('I click on menu options button', async () => {
     await LoginPage.menuButton.click();
-    await takeScreenshot('Menu_Options_Clicked');
+    
 });
 
 When('I click on Logout button', async () => {
     await LoginPage.logoutButton.click();
-    await takeScreenshot('Logout_Success');
+   
 });
 
 Then('I should be redirected to login page', async () => {

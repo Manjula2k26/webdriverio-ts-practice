@@ -14,7 +14,7 @@ When('I login with valid credentials', async () => {
 Then('I should see the product page', async () => {
     const currentUrl = await browser.getUrl();
     expect(currentUrl).toContain('/inventory.html');
-    await takeScreenshot('Product_Page');
+    
 })
 
 When('I login with invalid credentials', async () => {

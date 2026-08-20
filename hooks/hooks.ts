@@ -10,6 +10,6 @@ Before(async () =>{
 After(async function(scenario) 
 {
         const screenshot = await browser.takeScreenshot();
-        await allure.addAttachment('screenshot', Buffer.from(screenshot, 'base64'), 'image/png');
+        await allure.addAttachment('Scenario final state', Buffer.from(screenshot, 'base64'), 'image/png');
         
 })
