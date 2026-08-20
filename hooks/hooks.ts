@@ -1,5 +1,6 @@
 import { After, Before } from "@wdio/cucumber-framework";
 import Loginpage from "../pageobjects/login.page";
+import allure from "@wdio/allure-reporter";
 
 Before(async () =>{
     await Loginpage.open();
@@ -8,6 +9,7 @@ Before(async () =>{
 
 After(async function(scenario) 
 {
-    if(scenario.result?.status === 'FAILED')
-        await browser.takeScreenshot();
+        const screenshot = await browser.takeScreenshot();
+        await allure.addAttachment('screenshot', Buffer.from(screenshot, 'base64'), 'image/png');
+        
 })
