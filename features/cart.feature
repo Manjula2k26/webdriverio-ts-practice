@@ -6,3 +6,5 @@ Feature: Shopping Cart
     Then I should see "Sauce Labs Backpack" in the cart
     When I logout
     Then I should be redirected to the login page
+
+    # this is working code
