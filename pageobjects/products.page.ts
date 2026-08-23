@@ -1,25 +1,20 @@
-class ProductsPage{
+class ProductsPage {
 
-    get backpackAddButton()
-    {
+    get backpackAddButton() {
         return $('#add-to-cart-sauce-labs-backpack');
     }
 
-    get cartLink()
-    {
-       return $('.shopping_cart_link')
+    get cartLink() {
+        return $('.shopping_cart_link');
     }
 
-    async addBackpackToCart()
-    {
+    async addBackpackToCart() {
         await this.backpackAddButton.click();
     }
 
-    async openCart()
-    {
+    async openCart() {
         await this.cartLink.click();
     }
 }
-
 
 export default new ProductsPage();

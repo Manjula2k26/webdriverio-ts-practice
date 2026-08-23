@@ -37,3 +37,18 @@ Then('I should be redirected to the login page', async () => {
 
     await expect(browser).toHaveUrl('https://www.saucedemo.com/');
 });
+
+When('I remove {string} from the cart', async (productName: string) => {
+
+    await CartPage.removeBackPack();
+
+    await takeScreenshot('Product Removed From Cart');
+});
+
+
+Then('the cart should be empty', async () => {
+
+    expect(await CartPage.getCartItemsCount()).toBe(0);
+
+    await takeScreenshot('Empty Cart');
+});
