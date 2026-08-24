@@ -1,3 +1,5 @@
+
+import { environment } from '../config/environment.config';
 class LoginPage{
 
     get usernameInput()
@@ -31,7 +33,7 @@ class LoginPage{
     }
 
     async open(){
-    await browser.url('https://www.saucedemo.com/');
+    await browser.url(environment.baseUrl);
     }
 
     async login(username: string, password: string){
