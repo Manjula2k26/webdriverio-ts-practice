@@ -7,8 +7,12 @@ export const config = {
 
     capabilities: [
         {
-            browserName: process.env.TEST_BROWSER || 'chrome'
+        browserName: process.env.TEST_BROWSER || 'chrome',
+
+        'moz:firefoxOptions': {
+            args: ['-headless']
         }
+    }
     ],
 
     logLevel: 'info',
