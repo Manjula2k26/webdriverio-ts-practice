@@ -47,10 +47,18 @@ jobs:
     steps:
 
       - name: Display selected configuration
+        shell : powershell
         run: |
          echo Environment: $env:TEST_ENV
          echo Browser: $env:TEST_BROWSER
-         echo Test Suite: $env:TEST_SUITE
+          if ("${{ github.event_name }}" -eq "push") {
+            echo Test Suite: regression
+            echo Trigger: Automatic push
+          }
+          else {
+            echo Test Suite: $env:TEST_SUITE
+            echo Trigger: Manual
+          }
          
       - name: Checkout
         uses: actions/checkout@v4
@@ -64,7 +72,14 @@ jobs:
         run: npm install
 
       - name: Run WebdriverIO tests
-        run: npm run test:${{ inputs.suite }}
+        shell: powershell
+        run: |
+          if ("${{ github.event_name }}" -eq "push") {
+            npm run test:regression
+          }
+          else {
+            npm run test:${{ inputs.suite }}
+          }
 
       - name: Generate Allure report
         if: always()
