@@ -1,5 +1,5 @@
 Feature: Checkout Product
-
+@smoke @regression
   Scenario: Complete product checkout successfully
 
     When I login with valid credentials

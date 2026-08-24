@@ -1,5 +1,5 @@
 Feature: Remove Product From Cart
-
+@regression
   Scenario: Add product to cart and remove it from cart
     When I login with valid credentials
     And I add "Sauce Labs Backpack" to the cart

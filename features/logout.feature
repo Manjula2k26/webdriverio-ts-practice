@@ -1,5 +1,5 @@
 Feature: Logout
-
+@regression
  Scenario: Logout from the application
     Given I am logged into the application
     When I click on menu options button

@@ -1,5 +1,6 @@
 Feature: Shopping Cart
 
+  @smoke @regression
   Scenario: Add product to cart and logout
     When I login with valid credentials
     And I add "Sauce Labs Backpack" to the cart
