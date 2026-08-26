@@ -39,10 +39,9 @@ jobs:
     runs-on: windows-latest
 
     env:
-      TEST_ENV: ${{ inputs.environment }}
-      TEST_BROWSER: ${{ inputs.browser }}
-      TEST_SUITE: ${{ inputs.suite }}
-
+       TEST_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'test' }}
+       TEST_BROWSER: ${{ github.event_name == 'workflow_dispatch' && inputs.browser || 'firefox' }}
+       TEST_SUITE: ${{ github.event_name == 'workflow_dispatch' && inputs.suite || 'regression' }}
 
     steps:
 
